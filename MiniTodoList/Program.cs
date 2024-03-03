@@ -85,11 +85,28 @@ void showAllTasks()
 void insertTaskToList()
 {
     string utask;
-    Console.WriteLine("please Enter Your Task:");
-    utask=Console.ReadLine();
-    userTasks.Add(utask);
-    Console.WriteLine($"{utask} -> Successfully Added.");
-    Console.ReadLine();
+    bool isTasknotValid = true;
+    while (isTasknotValid)
+    {
+        Console.WriteLine("please Enter Your Task:");
+        utask = Console.ReadLine();
+        if (utask == "")
+        {
+            Console.WriteLine($"Task can not be empty please enter valid task.");
+        }
+        else if (userTasks.Contains(utask))
+        {
+            Console.WriteLine($"The {utask} has already been entered");
+        }
+        else
+        {
+            userTasks.Add(utask);
+            Console.WriteLine($"{utask} -> Successfully Added.");
+            isTasknotValid = false;
+            Console.ReadLine();
+        }
+        
+    }
 }
 
 // remove from list
